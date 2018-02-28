@@ -4,13 +4,20 @@ import * as vscode from 'vscode';
 
 import { DepNodeProvider } from './nodeDependencies'
 import { JsonOutlineProvider } from './jsonOutline'
+import { MyTreeViewProvider } from './myTreeView'; 
 import { FtpTreeDataProvider, FtpNode, FtpExplorer } from './ftpExplorer.fileSystemProvider'
+import { TreeNode } from './mytreemodel';
 
 export function activate(context: vscode.ExtensionContext) {
 	const rootPath = vscode.workspace.rootPath;
 
 	const nodeDependenciesProvider = new DepNodeProvider(rootPath);
 	const jsonOutlineProvider = new JsonOutlineProvider(context);
+	const myTreeViewProvider = new MyTreeViewProvider(context);
+	
+
+	let treeView = vscode.window.registerTreeDataProvider<TreeNode>('myTreeView', myTreeViewProvider);
+	vscode.commands.registerCommand('myTreeView.revealItem', () => myTreeViewProvider.reveal(treeView));
 
 	vscode.window.registerTreeDataProvider('nodeDependencies', nodeDependenciesProvider);
 	vscode.commands.registerCommand('nodeDependencies.refreshEntry', () => nodeDependenciesProvider.refresh());

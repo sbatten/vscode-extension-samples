@@ -7,6 +7,7 @@
 	"engines": {
 		"vscode": "^1.20.0"
 	},
+	"enableProposedApi": true,
 	"categories": [
 		"Other"
 	],
@@ -34,10 +35,18 @@
 				{
 					"id": "ftpExplorer",
 					"name": "FTP Explorer"
+				},
+				{
+					"id": "myTreeView",
+					"name": "My Tree View"
 				}
 			]
 		},
 		"commands": [
+			{
+				"command": "myTreeView.revealItem",
+				"title": "Reveal Item"
+			},
 			{
 				"command": "nodeDependencies.addEntry",
 				"title": "Add"
@@ -153,7 +162,7 @@
 	},
 	"devDependencies": {
 		"typescript": "^2.1.4",
-		"vscode": "^1.0.0",
+		"vscode": "^1.1.10",
 		"@types/node": "*"
 	},
 	"dependencies": {

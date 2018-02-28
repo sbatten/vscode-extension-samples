@@ -125,6 +125,7 @@ export class JsonOutlineProvider implements vscode.TreeDataProvider<number> {
 			};
 			treeItem.iconPath = this.getIcon(valueNode);
 			treeItem.contextValue = valueNode.type;
+			treeItem.tooltip = "hello";
 			return treeItem;
 		}
 		return null;
@@ -136,12 +137,12 @@ export class JsonOutlineProvider implements vscode.TreeDataProvider<number> {
 
 	private getIcon(node: json.Node): any {
 		let nodeType = node.type;
-		if (nodeType === 'boolean') {
-			return {
-				light: this.context.asAbsolutePath(path.join('resources', 'light', 'boolean.svg')),
-				dark: this.context.asAbsolutePath(path.join('resources', 'dark', 'boolean.svg'))
-			}
-		}
+		// if (nodeType === 'boolean') {
+		// 	return {
+		// 		light: this.context.asAbsolutePath(path.join('resources', 'light', 'boolean.svg')),
+		// 		dark: this.context.asAbsolutePath(path.join('resources', 'dark', 'boolean.svg'))
+		// 	}
+		// }
 		if (nodeType === 'string') {
 			return {
 				light: this.context.asAbsolutePath(path.join('resources', 'light', 'string.svg')),
